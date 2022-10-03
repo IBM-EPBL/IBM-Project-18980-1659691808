@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>
+    <title>DataFlair Job portal Project</title>
+</head>
+
+navbar.html
+<head>
+    <style>
+      .user{
+        color:white;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+        
+      </div>
+      {% if request.user.is_authenticated %}
+      <span class="user">Hello  &nbsp;</span>
+      <span ><a  class="user btn btn-info" href ="{% url 'logout' %}"> Logout</a></span>
+      {% else %}
+          <span ><a class="user" href="{% url 'login' %}">Login</a></span>>
+          <span ><a class="user" href="{% url 'register' %}">Register</a></span>>
+      {% endif  %}
+    </nav>
+<div class="container card">
+    <h1>Candidates applied</h1>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Resume</th>
+                <th>Gender</th>
+                <th>Mobile</th>
+                <th>phone number</th>
+                <th>Email</th>
+            </tr>
+            
+                <tr>
+                    <td>hari</td>
+                    <td>16/03/2007</td>
+                  
+                    <td><a href='{{c.resume.url}}' download >{{c.resume}}</td></a></td>
+          
+                    <td>Not submitted</td>
+                  
+                    <td>male</td>
+                    <td>8765486479</td>
+                    <td>haris23@gmail.com</td>
+                </tr>
+            
+        </table>
+    </div>
+</div>
+<head>
+    <style>
+        .maindiv{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<div class="maindiv jumbotron container">
+    <form method="POST"  action="">
+        
+        <input class="btn btn-success btn-lg" type="submit" value="Register">
+        <p>Already have an account<a href='{% url "login" %}'>Login</a></p>
+    </form>
+</div>
